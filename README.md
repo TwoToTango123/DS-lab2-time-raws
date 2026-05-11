@@ -1,23 +1,23 @@
-# Weather time series project
+# Проект по временны́м рядам погоды
 
-This workspace contains:
+В этой папке находятся:
 
-- `have_fun.xlsx` - the original Excel workbook with hidden sheets and mixed-quality weather data.
-- `timeseries_weather_pipeline.ipynb` - the notebook with parsing, cleaning, EDA, feature engineering, and forecasting scaffolding.
-- `cleaned_weather.csv` / `weather_panel_canonical.csv` - cleaned tabular outputs.
+- `have_fun.xlsx` - исходная Excel-книга со скрытыми листами и неоднородными погодными данными.
+- `timeseries_weather_pipeline.ipynb` - ноутбук с чтением, очисткой, EDA, подготовкой признаков и обучением моделей.
+- `cleaned_weather.csv` и `weather_panel_canonical.csv` - очищенные CSV-файлы с итоговыми данными.
 
-## What the notebook does
+## Что делает ноутбук
 
-1. Opens the workbook with `openpyxl` and lists all sheets, including hidden ones.
-2. Selects only sheets that contain a `ds` column.
-3. Decodes the `city` field from the broken cp1251/latin-1 text representation.
-4. Canonicalizes city names such as `Мосва -> Москва`, `Геленджи -> Геленджик`, `Сочи` variants, and similar typos.
-5. Converts timestamps and numeric columns to proper types.
-6. Rebuilds an hourly panel per city, fills gaps, clips extreme outliers, and saves the result to `weather_panel_canonical.csv`.
-7. Runs EDA helpers, stationarity checks, seasonal decomposition, spectral analysis, feature engineering, and model-training scaffolding.
+1. Открывает книгу через `openpyxl` и показывает все листы, включая скрытые.
+2. Оставляет только листы, где есть столбец `ds`.
+3. Исправляет битую кодировку в поле `city`.
+4. Приводит названия городов к единому виду, убирая опечатки и варианты написания.
+5. Преобразует даты и числовые столбцы к нужным типам.
+6. Собирает почасовую панель по городам, заполняет пропуски, убирает выбросы и сохраняет результат в `weather_panel_canonical.csv`.
+7. Выполняет EDA, проверку стационарности, декомпозицию, спектральный анализ и обучение моделей.
 
-## How to run
+## Как запустить
 
-Open `timeseries_weather_pipeline.ipynb` in VS Code and select the Python kernel from `.venv`.
+Откройте `timeseries_weather_pipeline.ipynb` в VS Code и выберите Python-kernel из `.venv`.
 
-If needed, install dependencies from `requirements.txt`.
+Если нужно, установите зависимости из `requirements.txt`.
